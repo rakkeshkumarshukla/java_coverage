@@ -16,7 +16,7 @@ public class teamprojects {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		String[] lines = new String[100];//ArrayList<String>();//TODO magic number. code to be refactored
+		List<String> lines = new ArrayList<String>();
 		String lineNew;
 		int i =0; 
 		while (input.hasNextLine()) {
@@ -24,14 +24,22 @@ public class teamprojects {
 			if (lineNew.isEmpty()) {
 				break;
 			}
-			lines[i]= (lineNew);
+			lines.add(lineNew);
 			i++;
 		}
 		input.close();
+		String[] lines_array = new String[lines.size()];
+		lines_array = lines.toArray(lines_array);
 		dataAnalyser dataAnalyserObject = new dataAnalyser();
-		dataAnalyserObject.init(lines);
-		dataAnalyserObject.printContractsCustomerCounts();
-		dataAnalyserObject.printGeozonesCustomerCountsNamesAndBuildTimes();
+		if(dataAnalyserObject.init(lines_array))
+		{
+			dataAnalyserObject.emitOutput();;
+			
+		}
+		else
+		{
+			System.out.println("input format is incorrect.");
+		}
 		
 
 	}

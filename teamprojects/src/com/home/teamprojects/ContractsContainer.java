@@ -6,6 +6,7 @@ import java.util.Map;
 public class ContractsContainer {
 	
 	Map<Integer,IContract> map_contracts= new HashMap<Integer,IContract>();
+	IprocessOutputContractwise processoutput ;
 	boolean addCustomer(Integer contractId, ICustomer customer)
 	{
 		//
@@ -36,9 +37,9 @@ public class ContractsContainer {
 	}
 	void printContractsCustomerCounts()
 	{
-		  for (Map.Entry<Integer,IContract> entry : map_contracts.entrySet())
-	            System.out.println("contractId = " + entry.getKey() +
-	                             ", unique customerIds = " + entry.getValue().GetUniqueCustomerIdCount());
+		processoutput = new CprintProcessOutputContractWise();//TODO , replace by factory method
+		processoutput.processoutput(map_contracts);//TODO, Iterator pattern to be used
+		  
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class GeozonesContainer {
 	Map<String,IGeozone> map_geozones= new HashMap<String,IGeozone>();
+	IprocessOutputgeoZonewise processoutput ;
 	boolean addCustomerAndProject(String geozoneId, ICustomer customer, IProject project )
 	{
 		//
@@ -52,26 +53,9 @@ public class GeozonesContainer {
 	}
 	void printGeozonesCustomerCountsNamesAndBuildTimes()
 	{
-		 for (Map.Entry<String,IGeozone> entry : map_geozones.entrySet())
-	        {
-	            System.out.println("geozone = " + entry.getKey());
-	            System.out.println("----------------------------------");
-	            
-	            System.out.println("unique customerIds = " + entry.getValue().GetUniqueCustomerIdCount());
-	            
-	            System.out.println("average buildduration = " + entry.getValue().GetAverageBuildDuration());
-	            
-	            String geozone = entry.getKey();
-	            Iterator<ICustomer> itr = entry.getValue().GetUniqueCustomerIdList();
-	            System.out.print("list of unique customerIds = ");
-	            while(itr.hasNext())
-	            {
-	            	 System.out.print(itr.next().getCustomerId() + ", ");
-	            }
-	            System.out.println();
-	            System.out.println("----------------------------------");
-	            
-	        }
+		processoutput = new CprintProcessOutputgeoZoneWise();//TODO replace by factory
+		processoutput.processoutput(map_geozones);//TODO, Iterator pattern to be used
+		
 	}
 
 
