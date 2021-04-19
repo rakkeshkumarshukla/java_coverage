@@ -45,8 +45,22 @@ average buildduration = 3445.0
 list of unique customerIds = 2343225, 
 ----------------------------------
 
-//TODO instead of try catch; error handling to be done for each element of CSV
-       
- //TODO printing output to be abstracted in interfaces
- 
- //TODO test cases/asserts are to be put into code
+
+Added regex for input data fields validation. assumed customerId, contractId and build duration to be 9 digit numbers.
+
+Added two interfaces for abstraction of emitting of output.
+
+Specialized these interfaces for outout emit(printing) on console
+
+
+Added JUnit5 test cases.
+
+Total 9 unit tests added.
+
+Added factory methods for customer, contract, team, project and geozones.
+
+Default types of customer, contract, team, project and geozones are created.
+
+Moved printing to container classes.
+
+Added dataAnalyser class to do input parsing, processing and print formatting.
