@@ -63,4 +63,4 @@ Default types of customer, contract, team, project and geozones are created.
 
 Moved printing to container classes.
 
-Added dataAnalyser class to do input parsing, processing and print formatting.
+Added dataAnalyser class to do input parsing, processing and output emitting.
